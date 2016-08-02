@@ -4,19 +4,12 @@ set_default_apps() {
   killall Finder
 
   # general extensions
-  for ext in {css,js,json,php,pug,py,rb,sh,txt}; do duti -s com.github.atom "${ext}" all; done # code
-}
-
-install_atom_packages() {
-  # packages
-  apm install atom-alignment color-picker dash esformatter git-plus highlight-line language-pug language-swift linter linter-eslint linter-jsonlint linter-rubocop linter-shellcheck merge-conflicts node-debugger p5xjs-autocomplete pigments relative-numbers seeing-is-believing
-
-  # themes and syntaxes
-  apm install atom-material-syntax atam-material-ui
+  for ext in {aac,avi,f4v,flac,m4a,m4b,mkv,mov,mp3,mp4,mpeg,mpg,wav,webm}; do duti -s io.mpv "${ext}" all; done # media
+  for ext in {css,js,json,php,pug,py,rb,sh,txt}; do duti -s com.microsoft.VSCode "${ext}" all; done # code
 }
 
 install_vscode_packages() {
-  code --install-extension dbaeumer.vscode-eslint gerane.Theme-Peacock misogi.ruby-rubocop rebornix.Ruby
+  code --install-extension microsoft.C# cssho.SVG-Viewer
 }
 
 configure_git() {
