@@ -4,15 +4,9 @@ install_brew() {
 }
 
 install_python() {
-  brew reinstall pyenv
-  readonly local python2="$(pyenv install --list | tr -d ' ' | grep '^2' | grep --invert-match 'dev\|a\|b' | tail -1)"
-  readonly local python_latest="$(pyenv install --list | tr -d ' ' | grep '^\d' | grep --invert-match 'dev\|a\|b' | tail -1)"
-  pyenv install "${python2}"
-  pyenv install "${python_latest}"
-  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-  pyenv global "${python_latest}"
+  brew install python3
   # install some eggs
-  pip install livestreamer subliminal
+  pip3 install livestreamer subliminal
 }
 
 #install_ruby() {
