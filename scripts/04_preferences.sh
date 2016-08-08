@@ -156,7 +156,7 @@ Configure_osx_settings() {
   defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
   # Kill affected apps
-  for app in "Activity Monitor" "Dock" "Finder" "Mail" "Photos" "Safari" "Terminal"; do
+  for app in "Activity Monitor" "Dock" "Finder" "Mail" "Photos" "Safari"; do
     killall "${app}" &> /dev/null
   done
 
