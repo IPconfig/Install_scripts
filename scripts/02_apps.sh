@@ -28,7 +28,7 @@ install_cask_apps() {
 }
 
 install_mas_apps() {
-  readonly local mas_apps=('1password=443987910' 'xcode=497799835' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'haskell=841285201')
+  readonly local mas_apps=('1password=443987910' 'xcode=497799835' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'Haskell=841285201')
 
   mas signin "${mas_email}" "${mas_password}"
 
