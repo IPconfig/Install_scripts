@@ -17,7 +17,6 @@ run_install_dotfiles() {
   install_python
 
   install_brew_apps
-  make_caskroom
   install_cask_apps
   install_mas_apps
 

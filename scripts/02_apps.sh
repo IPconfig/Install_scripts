@@ -11,11 +11,6 @@ install_brew_apps() {
   #echo 'ExitNodes {us}' >> "$(brew --prefix)/etc/tor/torrc"
 }
 
-make_caskroom() {
-  sudo -S mkdir -p /opt/homebrew-cask/Caskroom <<< "${sudo_password}" 2> /dev/null
-  sudo -S chown -R ${USER}:staff /opt/homebrew-cask <<< "${sudo_password}" 2> /dev/null
-}
-
 install_cask_apps() {
   brew cask install --appdir='/Applications' cyberduck docker-toolbox drop-to-gif dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman pycharm-ce sequel-pro screenflow shotcut steam torbrowser transmission visual-studio-code whatsapp xact wwdc
 
