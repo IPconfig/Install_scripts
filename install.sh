@@ -23,7 +23,6 @@ run_install_dotfiles() {
   install_mas_apps
 
   set_default_apps
-  install_atom_packages
   install_vscode_packages
   configure_git
   lower_startup_chime
