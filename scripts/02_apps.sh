@@ -17,7 +17,7 @@ make_caskroom() {
 }
 
 install_cask_apps() {
-  brew cask install --appdir='/Applications' atom cyberduck dockertoolbox drop-to-gif dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman pycharm-ce royal-tsx sequel-pro screenflow shotcut steam torbrowser transmission visual-studio-code whatsapp xact wwdc
+  brew cask install --appdir='/Applications' cyberduck dockertoolbox drop-to-gif dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman pycharm-ce royal-tsx sequel-pro screenflow shotcut steam torbrowser transmission visual-studio-code whatsapp xact wwdc
 
   # install alternative versions
   brew tap caskroom/versions
@@ -28,7 +28,7 @@ install_cask_apps() {
 }
 
 install_mas_apps() {
-  readonly local mas_apps=('1password=443987910' 'xcode=497799835' 'WiFi Scanner=411680127' 'The Unarchiver=425424353')
+  readonly local mas_apps=('1password=443987910' 'xcode=497799835' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'haskell=841285201')
 
   mas signin "${mas_email}" "${mas_password}"
 
