@@ -14,7 +14,7 @@ run_install_dotfiles() {
 
   install_brew
   #install_bash
-  install_python
+  #install_python
 
   install_brew_apps
   install_cask_apps

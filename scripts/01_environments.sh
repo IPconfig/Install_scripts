@@ -21,5 +21,5 @@ install_bash() {
 install_python() {
   brew install python3
   # install some eggs
-  pip3 install livestreamer subliminal
+  pip3 install livestreamer
 }
