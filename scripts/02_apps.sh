@@ -24,7 +24,7 @@ install_cask_apps() {
   brew cask install --appdir='/Applications' google-chrome-canary firefox-beta
 
   # prefpanes, qlplugins, colorpickers
-  brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlimagesize qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook
+  brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlimagesize qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook qlmarkdown qlprettypatch quicklook-csv webpquicklook suspicious-package
 }
 
 install_mas_apps() {
