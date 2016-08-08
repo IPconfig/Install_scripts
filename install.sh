@@ -18,7 +18,7 @@ run_install_dotfiles() {
 
   install_brew_apps
   install_cask_apps
-  install_mas_apps
+  #install_mas_apps
 
   set_default_apps
   install_vscode_packages
