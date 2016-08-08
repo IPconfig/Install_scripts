@@ -31,6 +31,7 @@ run_install_dotfiles() {
 
   Configure_osx_settings
 
+  cleanup_open_with
   cleanup_brew
   cleanup_error_log
   killall caffeinate # computer can go back to sleep
