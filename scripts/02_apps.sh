@@ -17,11 +17,11 @@ make_caskroom() {
 }
 
 install_cask_apps() {
-  brew cask install --appdir='/Applications' cyberduck docker-toolbox drop-to-gif dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman pycharm-ce royal-tsx sequel-pro screenflow shotcut steam torbrowser transmission visual-studio-code whatsapp xact wwdc
+  brew cask install --appdir='/Applications' cyberduck docker-toolbox drop-to-gif dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman pycharm-ce sequel-pro screenflow shotcut steam torbrowser transmission visual-studio-code whatsapp xact wwdc
 
   # install alternative versions
   brew tap caskroom/versions
-  brew cask install --appdir='/Applications' google-chrome-canary firefox-beta
+  brew cask install --appdir='/Applications' firefox-beta google-chrome-canary royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
   brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlimagesize qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook qlmarkdown qlprettypatch quicklook-csv webpquicklook suspicious-package
