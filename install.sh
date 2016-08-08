@@ -14,9 +14,8 @@ run_install_dotfiles() {
   update_system
 
   install_brew
+  #install_bash
   install_python
-  # install_ruby
-  # install_node
 
   install_brew_apps
   make_caskroom
