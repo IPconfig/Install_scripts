@@ -4,6 +4,7 @@ install_brew_apps() {
   brew install ghi git git-extras #git from the commandline
   brew install gifify #make gifs from movies
   brew install hr #horizontal ruler for the terminal
+  brew install duti #needer later on to set default app for extensions
 
   # install and configure tor
   #brew install tor torsocks
