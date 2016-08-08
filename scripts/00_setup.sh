@@ -41,16 +41,7 @@ ask_details() {
   read -p 'Telephone number: ' telephone
   sudo -S defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Email: ${email}\nTel: ${telephone}" <<< "${sudo_password}" 2> /dev/null
 }
-echo "Installing Xcode Command Line Tools."
-install_xcode() {
-  if ! xcode-select --print-path 2> /dev/null; then
-    xcode-select --install
 
-    until xcode-select --print-path 2> /dev/null; do
-      sleep 5
-    done
-  fi
-}
 echo "Updating OSX.  If this requires a restart, run the script again."
 update_system() {
   softwareupdate --install --all

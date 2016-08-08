@@ -5,12 +5,11 @@ run_install_dotfiles() {
   for shell_script in '/tmp/install_scripts-master/scripts/'*.sh; do
     source "${shell_script}"
   done
-  
+
   clear
 
   initial_setup
   ask_details
-  install_xcode
   update_system
 
   install_brew
