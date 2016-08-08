@@ -6,6 +6,13 @@ run_install_dotfiles() {
     source "${shell_script}"
   done
 
+  # helper functions
+  trap 'exit 0' SIGINT # exit cleanly if aborted with ⌃C
+
+  info() {
+    echo "$(tput setaf 2)•$(tput sgr0) $1"
+  }
+
   clear
 
   initial_setup
