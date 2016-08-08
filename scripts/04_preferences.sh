@@ -16,9 +16,15 @@ Configure_osx_settings() {
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-  info 'Save to disk (not to iCloud) by default.'
+  info 'Save documents to disk (not to iCloud) by default.'
   defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+  info 'Disable shadow in screenshots.'
+  defaults write com.apple.screencapture disable-shadow -bool true
+
+  ###############################################################################
+  # keyboard & mouse                                                            #
+  ###############################################################################
   info 'Enable tap to click for this user.'
   defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
@@ -26,8 +32,11 @@ Configure_osx_settings() {
   # (e.g. enable Tab in modal dialogs)
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-  info 'Disable shadow in screenshots.'
-  defaults write com.apple.screencapture disable-shadow -bool true
+  info 'Disable smart quotes as they’re annoying when typing code'
+  defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+  info 'Disable smart dashes as they’re annoying when typing code'
+  defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
   ###############################################################################
   # Finder & Dock                                                               #
@@ -78,7 +87,7 @@ Configure_osx_settings() {
   # Bottom right screen corner → Mission Control
   defaults write com.apple.dock wvous-br-corner -int 2
 
-  # Expand the following File Info panes:
+  info 'Expand the file info panels by default'
   # “General”, “Open with”, and “Sharing & Permissions”
   defaults write com.apple.finder FXInfoPanesExpanded -dict \
   	General -bool true \
@@ -136,6 +145,9 @@ Configure_osx_settings() {
 
   info 'Enable Debug Menu in the Mac App Store'
   defaults write com.apple.appstore ShowDebugMenu -bool true
+
+  info 'Check for software updates daily, not just once per week'
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
   ###############################################################################
   # Photos                                                                      #
