@@ -20,20 +20,6 @@ configure_git() {
   git config --global rerere.autoupdate true
 }
 
-install_launchagents() {
-  readonly local launchagents_dir="${HOME}/Library/LaunchAgents"
-  mkdir -p "${launchagents_dir}"
-
-  for plist_file in "${helper_files}/launchd_plists"/*; do
-    readonly local plist_name=$(basename "${plist_file}")
-
-    mv "${plist_file}" "${launchagents_dir}"
-    launchctl load -w "${launchagents_dir}/${plist_name}"
-  done
-
-  rmdir "${helper_files}/launchd_plists"
-}
-
 lower_startup_chime() {
   curl -fsSL 'https://raw.githubusercontent.com/vitorgalvao/lowchime/master/lowchime' --output '/tmp/lowchime'
   chmod +x '/tmp/lowchime'

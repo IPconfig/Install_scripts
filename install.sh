@@ -5,14 +5,7 @@ run_install_dotfiles() {
   for shell_script in '/tmp/install_scripts-master/scripts/'*.sh; do
     source "${shell_script}"
   done
-
-  # helper functions
-  trap 'exit 0' SIGINT # exit cleanly if aborted with ⌃C
-
-  info() {
-    echo "$(tput setaf 2)•$(tput sgr0) $1"
-  }
-
+  
   clear
 
   initial_setup
