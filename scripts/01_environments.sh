@@ -13,7 +13,7 @@ install_bash() {
   # We installed the new shell, now we have to activate it
   echo "Adding the newly installed shell to the list of allowed shells"
   # Prompts for password
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+  bash -c 'echo /usr/local/bin/bash >> /etc/shells'
   # Change to the new shell, prompts for password
   chsh -s /usr/local/bin/bash
 }
