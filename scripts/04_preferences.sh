@@ -110,9 +110,28 @@ Configure_osx_settings() {
   defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
   defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
+  echo 'Show the full URL in the adress bar'
+  defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+  echo 'Show status bar'
+  defaults write com.apple.Safari ShowStatusBar -bool true
+
+  echo 'Show favorites bar'
+  defaults write com.apple.Safari ShowFavoritesBar -bool true
+  defaults write com.apple.Safari "ShowFavoritesBar-v2" -bool true
+
+  echo 'show tab bar'
+  defaults write com.apple.Safari AlwaysShowTabBar -bool true
+
   echo 'Privacy: don’t send search queries to Apple.'
   defaults write com.apple.Safari UniversalSearchEnabled -bool false
   defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+  # Do not track
+  defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+  # Update extensions automatically
+  defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
   ###############################################################################
   # Mail                                                                        #
