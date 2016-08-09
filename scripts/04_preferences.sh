@@ -155,8 +155,19 @@ Configure_osx_settings() {
   echo 'Prevent Photos from opening automatically when devices are plugged in.'
   defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
+  ###############################################################################
+  # Disk Utility                                                                #
+  ###############################################################################
+  echo "Setting Disk Utility preferences"
+  # Enable the debug menu in Disk Utility
+  defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+  defaults write com.apple.DiskUtility advanced-image-options -bool true
+  CFPreferencesAppSynchronize "com.apple.DiskUtility"
+
+
+
   # Kill affected apps
-  for app in "Activity Monitor" "Dock" "Finder" "Mail" "Photos" "Safari"; do
+  for app in "Activity Monitor" "Dock" "Disk Utility" "Finder" "Mail" "Photos" "Safari"; do
     killall "${app}" &> /dev/null
   done
 
