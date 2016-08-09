@@ -22,4 +22,9 @@ install_python() {
   brew install python3
   # install some eggs
   pip3 install livestreamer
+
+install_ruby() {
+  brew install ruby
+  gem update --system
+  gem install --no-document pygments.rb # needed for installing ghi with brew
 }
