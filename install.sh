@@ -13,8 +13,8 @@ run_install_dotfiles() {
   update_system
 
   install_brew
-  #install_python
   install_bash
+  install_python
   install_ruby
 
   install_brew_apps

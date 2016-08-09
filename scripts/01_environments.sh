@@ -19,9 +19,20 @@ install_bash() {
 }
 
 install_python() {
-  brew install python3
+  brew install python # this will already prefer the brewed one above the system installed one
+  pip install --upgrade pip
   # install some eggs
-  pip3 install livestreamer
+  pip install virtualenv virtualenvwrapper
+
+  #python3
+  brew install python3
+  pip3 install --upgrade pip3
+
+  # create virtualenvironments 
+  export WORKON_HOME=~/.virtualenvs
+  mkdir -p $WORKON_HOME
+  source /usr/local/bin/virtualenvwrapper.sh
+}
 
 install_ruby() {
   brew install ruby
