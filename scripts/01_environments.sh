@@ -6,6 +6,7 @@ install_brew() {
 }
 
 install_bash() {
+  renew_sudo
   # Install Bash 4.
   brew install bash
   brew tap homebrew/versions
