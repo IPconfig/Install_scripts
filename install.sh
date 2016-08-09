@@ -10,6 +10,7 @@ run_install_dotfiles() {
 
   initial_setup
   ask_details
+  install_xcode
   update_system
 
   install_brew
