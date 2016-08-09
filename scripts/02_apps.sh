@@ -1,7 +1,8 @@
 install_brew_apps() {
+  brew install ffmpeg --with-faac --with-libvpx --with-libvorbis --with-openssl --with-theora --with-x265
   brew install asciinema asciinema2gif #install terminal screen recorder
   brew install exiftool #R/W exif information
-  brew install ghi git git-extras #git from the commandline
+  brew install git git-extras ghi #git from the commandline
   brew install gifify #make gifs from movies
   brew install hr #horizontal ruler for the terminal
   brew install duti #needer later on to set default app for extensions
