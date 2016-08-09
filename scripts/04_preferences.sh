@@ -83,7 +83,7 @@ Configure_osx_settings() {
   # Bottom left screen corner → Desktop
   defaults write com.apple.dock wvous-bl-corner -int 4
   # Top right screen corner → Notification Center
-  defaults write com.apple.dock wvous-tr-corner -int 12
+  # defaults write com.apple.dock wvous-tr-corner -int 12
   # Bottom right screen corner → Mission Control
   defaults write com.apple.dock wvous-br-corner -int 2
 
