@@ -9,7 +9,7 @@ set_default_apps() {
 }
 
 install_vscode_packages() {
-  code --install-extension ms-vscode.csharp cssho.SVG-Viewer
+  code --install-extension ms-vscode.csharp donjayamanne.python robertohuertasm.vscode-icons cssho.vscode-svgviewer
 }
 
 configure_git() {
