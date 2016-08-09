@@ -44,11 +44,11 @@ Configure_osx_settings() {
   echo "Disable the 'Are you sure you want to open this application?' dialog."
   defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-  echo 'Show all filename extensions in Finder.'
-  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+  #echo 'Show all filename extensions in Finder.'
+  #defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-  echo 'Disable the warning when changing a file extension.'
-  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+  #echo 'Disable the warning when changing a file extension.'
+  #defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
   echo 'Use list view in all Finder windows by default.'
   # Four-letter codes for the other view modes: 'icnv', 'clmv', 'Flwv'
