@@ -79,6 +79,9 @@ Configure_osx_settings() {
   echo 'Avoid creating .DS_Store files on network volumes.'
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
+  echo 'Add a recently used applications folder to dock'
+  defaults write com.apple.dock persistent-others -array-add '{"tile-data" = {"list-type" = 1;}; "tile-type" = "recents-tile";}'
+
   echo 'Set hot corners.'
   # Bottom left screen corner → Desktop
   defaults write com.apple.dock wvous-bl-corner -int 4
