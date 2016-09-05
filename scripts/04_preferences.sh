@@ -8,6 +8,10 @@ Configure_osx_settings() {
     sudo -v
   fi
   # more options on http://mths.be/osx
+
+  ###############################################################################
+  # General                                                                     #
+  ###############################################################################
   echo 'Expand save panel by default.'
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -98,7 +102,7 @@ Configure_osx_settings() {
   	Privileges -bool true
 
   ###############################################################################
-  # Safari & Networking                                                         #
+  # Safari & Networking, Privacy                                                #
   ###############################################################################
   echo 'Use OpenDNS servers.'
   sudo networksetup -setdnsservers Wi-Fi 208.67.220.220 208.67.222.222
