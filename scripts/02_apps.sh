@@ -5,6 +5,7 @@ install_brew_apps() {
   brew install git git-extras ghi # git from the commandline
   brew install gifify # make gifs from movies
   brew install hr # horizontal ruler for the terminal
+  brew install mactex # Latex distribution
   brew install duti # needer later on to set default app for extensions
   brew install mas # mac app store from the command line
 
