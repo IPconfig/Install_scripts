@@ -13,6 +13,13 @@ initial_setup() {
   caffeinate & # prevent computer from going to sleep
 }
 
+
+update_system() {
+  echo "Updating OSX. If this requires a restart, run the script again."
+  softwareupdate --install --all
+}
+
+
 ask_details() {
   # ask for the administrator password upfront, for commands that require 'sudo'
   clear
@@ -51,8 +58,3 @@ ask_details() {
       done
     fi
   }
-
-echo "Updating OSX.  If this requires a restart, run the script again."
-update_system() {
-  softwareupdate --install --all
-}

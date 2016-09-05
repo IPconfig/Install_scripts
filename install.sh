@@ -8,10 +8,10 @@ run_install_dotfiles() {
 
   clear
 
+  update_system
   initial_setup
   ask_details
   install_xcode
-  update_system
 
   install_brew
   install_bash
