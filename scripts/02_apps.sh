@@ -1,4 +1,5 @@
 install_brew_apps() {
+  brew install imagemagick --with-webp
   brew install ffmpeg --with-faac --with-libvpx --with-libvorbis --with-openssl --with-theora --with-x265
   brew install asciinema asciinema2gif # install terminal screen recorder
   brew install exiftool # R/W exif information
