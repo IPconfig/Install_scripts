@@ -8,24 +8,25 @@ run_install_dotfiles() {
 
   clear
 
-  update_system
-  initial_setup
-  ask_details
-  install_xcode
+  #update_system
+  #initial_setup
+  #ask_details
+  #install_xcode
 
-  install_brew
+  #install_brew
   install_bash
-  install_python
-  install_ruby
+  #install_python
+  #install_ruby
+  install_powerline
 
-  install_brew_apps
-  install_cask_apps
-  install_mas_apps
+  #install_brew_apps
+  #install_cask_apps
+  #install_mas_apps
 
-  set_default_apps
-  install_vscode_packages
-  configure_git
-  lower_startup_chime
+  #set_default_apps
+  #install_vscode_packages
+  #configure_git
+  #lower_startup_chime
 
   Configure_osx_settings
 
