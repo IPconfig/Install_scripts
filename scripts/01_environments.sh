@@ -17,10 +17,10 @@ install_bash() {
 
   configure_bash() {
       {
-        # Bash completion
+        echo "# Bash completion"
         echo "if [ -f /etc/bash_completion ] && ! shopt -oq posix; then"
         echo "  . /etc/bash_completion"
-        echo"fi"
+        echo "fi"
 
         # Use Nano as default texteditor since I hate vim (Sorry)  
         echo "export EDITOR=/usr/bin/nano"
@@ -32,10 +32,11 @@ install_bash() {
         #  http://unix.stackexchange.com/a/48113
         echo "export HISTCONTROL=ignoredups:erasedups         # no duplicate entries"
         echo "export HISTSIZE=100000                          # big big history (default is 500)"
-        echo "export HISTFILESIZE=$HISTSIZE                   # big big history"
+        echo "export HISTFILESIZE=\$HISTSIZE\                  # big big history"
         echo "which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it"
 
         echo "# Save and reload the history after each command finishes"
+        #TODO: fix PROMPT_COMMAND; also used by powerline
         echo "export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND""
         echo "# ^ the only downside with this is [up] on the readline will go over all history not just this bash session."
       }
@@ -93,6 +94,7 @@ install_powerline() {
   {
     {
     echo ""
+    echo "# Load powerline"
     echo "function _update_ps1() {"
     echo $'\t'"export PS1=\"\$(~/powerline-shell.py \$? 2> /dev/null)\""
     echo "}"
