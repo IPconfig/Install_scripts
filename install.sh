@@ -14,7 +14,7 @@ run_install_dotfiles() {
   #install_xcode
 
   #install_brew
-  install_bash
+  #install_bash
   #install_python
   #install_ruby
   install_powerline
@@ -28,10 +28,10 @@ run_install_dotfiles() {
   #configure_git
   #lower_startup_chime
 
-  Configure_osx_settings
+  #Configure_osx_settings
 
   cleanup_brew
-  cleanup_error_log
+  #cleanup_error_log
   killall caffeinate # computer can go back to sleep
   final_message
 }
