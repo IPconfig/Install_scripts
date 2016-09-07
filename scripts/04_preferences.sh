@@ -213,7 +213,7 @@ tell application "Terminal"
 	(* Open the custom theme so that it gets added to the list
 	   of available terminal themes (note: this will open two
 	   additional terminal windows). *)
-	do shell script "open '/tmp/install_scripts-master/scripts/" & themeName & ".terminal'"
+	do shell script "open '/tmp/install_scripts-master/theme/" & themeName & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
