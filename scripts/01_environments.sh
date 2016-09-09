@@ -24,23 +24,17 @@ install_bash() {
         echo "if [ -f /etc/bash_completion ] && ! shopt -oq posix; then"
         echo "  . /etc/bash_completion"
         echo "fi"
-
-        # Use Nano as default texteditor since I hate vim (Sorry)  
         echo "export EDITOR=/usr/bin/nano"
         echo "" 
 
-        # timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
         echo "export HISTTIMEFORMAT='%F %T '"
-        # keep history up to date, across sessions, in realtime
-        #  http://unix.stackexchange.com/a/48113
         echo "export HISTCONTROL=ignoredups:erasedups         # no duplicate entries"
-        echo "export HISTSIZE=100000                          # big big history (default is 500)"
-        echo "export HISTFILESIZE=\$HISTSIZE\                  # big big history"
+        echo "export HISTSIZE=10000                           # big history (default is 500)"
+        echo "export HISTFILESIZE=\$HISTSIZE\                 # big history"
         echo "which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it"
 
         echo "# Save and reload the history after each command finishes"
-        #TODO: fix PROMPT_COMMAND; also used by powerline
-        echo "export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND""
+        echo "export PROMPT_COMMAND=\"history -a; history -c; history -r; \$PROMPT_COMMAND\""
         echo "# ^ the only downside with this is [up] on the readline will go over all history not just this bash session."
       }
     } >> ~/.bash_profile
@@ -77,10 +71,11 @@ install_ruby() {
 }
 
 install_powerline() {
-  SHDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
   # Install fonts for powerline-shell
   echo "Install fonts for powerline-shell"
-  sh "$SHDIR/fonts/install.sh"
+  git clone https://github.com/powerline/fonts
+  sh "${HOME}/fonts/install.sh"
+  rm -rf -- fonts
 
   # Install Powerline-shell
   echo "Installing and Configuring Powerline-shell"
@@ -91,7 +86,7 @@ install_powerline() {
   cp config.py.dist config.py
   ./install.py
   # Copy the generated powerline-shell.py to Home directory
-  cp powerline-shell.py ~/powerline-shell.py
+  cp powerline-shell.py ~/.powerline-shell.py
 
   ADDTO_BASHPROFILE ()
   {
@@ -99,7 +94,7 @@ install_powerline() {
     echo ""
     echo "# Load powerline"
     echo "function _update_ps1() {"
-    echo $'\t'"export PS1=\"\$(~/powerline-shell.py \$? 2> /dev/null)\""
+    echo $'\t'"export PS1=\"\$(~/.powerline-shell.py \$? 2> /dev/null)\""
     echo "}"
     echo ""
     echo "export PROMPT_COMMAND=\"_update_ps1; \$PROMPT_COMMAND\""
