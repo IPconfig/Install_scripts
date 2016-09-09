@@ -94,7 +94,7 @@ Configure_osx_settings() {
   # Bottom right screen corner → Mission Control
   defaults write com.apple.dock wvous-br-corner -int 2
 
-  echo 'Expand the file echo panels by default'
+  echo 'Expand the file echo panels by default.'
   # “General”, “Open with”, and “Sharing & Permissions”
   defaults write com.apple.finder FXInfoPanesExpanded -dict \
   	General -bool true \
@@ -166,13 +166,13 @@ Configure_osx_settings() {
   ###############################################################################
   # Mac App Store                                                               #
   ###############################################################################
-  echo 'Enable the WebKit Developer Tools in the Mac App Store'
+  echo 'Enable the WebKit Developer Tools in the Mac App Store.'
   defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
-  echo 'Enable Debug Menu in the Mac App Store'
+  echo 'Enable Debug Menu in the Mac App Store.'
   defaults write com.apple.appstore ShowDebugMenu -bool true
 
-  echo 'Check for software updates daily, not just once per week'
+  echo 'Check for software updates daily, not just once per week.'
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
   ###############################################################################
@@ -184,7 +184,7 @@ Configure_osx_settings() {
   ###############################################################################
   # Disk Utility                                                                #
   ###############################################################################
-  echo "Setting Disk Utility preferences"
+  echo 'Setting Disk Utility preferences.'
   # Enable the debug menu in Disk Utility
   defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
   defaults write com.apple.DiskUtility advanced-image-options -bool true
