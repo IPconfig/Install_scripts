@@ -15,6 +15,9 @@ install_bash() {
   sudo -S sh -c 'echo "/usr/local/bin/bash" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
   sudo -S chsh -s '/usr/local/bin/bash' "${USER}" <<< "${sudo_password}" 2> /dev/null
 
+  #silence the last login time in terminal
+  mv /tmp/install_scripts-master/.hushlogin ~/.hushlogin 
+
   configure_bash() {
       {
         echo "# Bash completion"
