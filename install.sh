@@ -15,15 +15,19 @@ run_install_dotfiles() {
 
   #install_brew
   install_bash
-  #install_python
-  #install_ruby
   install_powerline
+  install_python
+  #install_ruby
+  install_powerline_fonts
 
-  #install_brew_apps
+  install_brew_apps
   #install_cask_apps
   #install_mas_apps
 
   #set_default_apps
+  hushlogin
+  configure_zsh
+  install_zsh_plugins
   #install_vscode_packages
   #configure_git
   #lower_startup_chime

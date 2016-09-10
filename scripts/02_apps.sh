@@ -9,6 +9,7 @@ install_brew_apps() {
   brew install mactex # Latex distribution
   brew install duti # needer later on to set default app for extensions
   brew install mas # mac app store from the command line
+  brew install zsh # different shell
 
 }
 

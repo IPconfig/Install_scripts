@@ -14,39 +14,43 @@ install_bash() {
   echo "Adding the newly installed shell to the list of allowed shells"
   sudo -S sh -c 'echo "/usr/local/bin/bash" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
   sudo -S chsh -s '/usr/local/bin/bash' "${USER}" <<< "${sudo_password}" 2> /dev/null
+  mv /tmp/install_scripts-master/.bash_profile ~/.bash_profile
+} 
 
-  #silence the last login time in terminal
-  mv /tmp/install_scripts-master/.hushlogin ~/.hushlogin 
+install_powerline(){
+  # Install Powerline-shell
+  git clone https://github.com/milkbikis/powerline-shell
+  # Enter the powerline-shell directory and copy config.py.dist to config.py. Then run the install.py script.
+  cd powerline-shell
+  cp config.py.dist config.py
+  ./install.py
+  # Copy the generated powerline-shell.py to Home directory
+  cp powerline-shell.py ~/.powerline-shell.py
 
-  configure_bash() {
-      {
-        echo "# Bash completion"
-        echo "if [ -f /etc/bash_completion ] && ! shopt -oq posix; then"
-        echo "  . /etc/bash_completion"
-        echo "fi"
-        echo "export EDITOR=/usr/bin/nano"
-        echo "" 
+  ADDTO_BASHPROFILE (){
+    {
+      echo ""
+      echo "# Load powerline"
+      echo "function _update_ps1() {"
+      echo $'\t'"export PS1=\"\$(~/.powerline-shell.py \$? 2> /dev/null)\""
+      echo "}"
+      echo ""
+      echo "export PROMPT_COMMAND=\"_update_ps1; \$PROMPT_COMMAND\""
+    }
+  } >> ~/.bash_profile
 
-        echo "export HISTTIMEFORMAT='%F %T '"
-        echo "export HISTCONTROL=ignoredups:erasedups         # no duplicate entries"
-        echo "export HISTSIZE=10000                           # big history (default is 500)"
-        echo "export HISTFILESIZE=\$HISTSIZE\                 # big history"
-        echo "which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it"
-
-        echo "# Save and reload the history after each command finishes"
-        echo "export PROMPT_COMMAND=\"history -a; history -c; history -r; \$PROMPT_COMMAND\""
-        echo "# ^ the only downside with this is [up] on the readline will go over all history not just this bash session."
-      }
-    } >> ~/.bash_profile
-
-  # Configure Bash_History
-  if grep -q "HISTSIZE=100000 " ~/.bash_profile
+  # Change / Setup bash custom prompt (PS1) using powerline
+  if grep -q "powerline-shell.py" ~/.bash_profile
   then
-    echo "Existing bash_history found in bash_profile, nothing added"
+    echo "Existing powerline text found in bash_profile, nothing added"
   else
-    configure_bash
+    ADDTO_BASHPROFILE
   fi
+  # Clean up the downloaded powerline-shell directory
+  cd ..; rm -rf -- powerline-shell
+  echo "Powerline added to shell, please logout or restart"
 }
+
 
 install_python() {
   brew install python # this will already prefer the brewed one above the system installed one
@@ -70,46 +74,9 @@ install_ruby() {
   gem install --no-document pygments.rb # needed for installing ghi with brew
 }
 
-install_powerline() {
-  # Install fonts for powerline-shell
-  echo "Install fonts for powerline-shell"
+install_powerline_fonts() {
+  # Install fonts for powerline-shell or zsh
   git clone https://github.com/powerline/fonts
   sh "${HOME}/fonts/install.sh"
   rm -rf -- fonts
-
-  # Install Powerline-shell
-  echo "Installing and Configuring Powerline-shell"
-  # Clone from https://github.com/milkbikis/powerline-shell
-  git clone https://github.com/milkbikis/powerline-shell
-  # Enter the powerline-shell directory and copy config.py.dist to config.py. Then run the install.py script.
-  cd powerline-shell
-  cp config.py.dist config.py
-  ./install.py
-  # Copy the generated powerline-shell.py to Home directory
-  cp powerline-shell.py ~/.powerline-shell.py
-
-  ADDTO_BASHPROFILE ()
-  {
-    {
-    echo ""
-    echo "# Load powerline"
-    echo "function _update_ps1() {"
-    echo $'\t'"export PS1=\"\$(~/.powerline-shell.py \$? 2> /dev/null)\""
-    echo "}"
-    echo ""
-    echo "export PROMPT_COMMAND=\"_update_ps1; \$PROMPT_COMMAND\""
-    }
-  } >> ~/.bash_profile
-
-  # Change / Setup bash custom prompt (PS1) using powerline
-  if grep -q "powerline-shell.py" ~/.bash_profile
-  then
-    echo "Existing powerline text found in bash_profile, nothing added"
-  else
-    ADDTO_BASHPROFILE
-  fi
-
-  # Clean up the downloaded powerline-shell directory
-  cd ..; rm -rf -- powerline-shell
-  echo "Powerline added to shell, please logout or restart"
 }
