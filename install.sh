@@ -15,7 +15,6 @@ run_install_dotfiles() {
 
   #install_brew
   install_bash
-  install_powerline
   install_python
   #install_ruby
   install_powerline_fonts
