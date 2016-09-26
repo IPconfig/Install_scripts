@@ -16,6 +16,20 @@ install_bash() {
   sudo -S chsh -s '/usr/local/bin/bash' "${USER}" <<< "${sudo_password}" 2> /dev/null
 } 
 
+
+
+
+install_zsh(){
+  brew install zsh
+  echo "Installing zplug..."
+  export ZPLUG_HOME=~/.zplug
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  source $ZPLUG_HOME/init.zsh
+  zplug update --self
+  
+  #load preferences
+  mv /tmp/install_scripts-master/.zshrc ~/.zshrc
+
 }
 
 
