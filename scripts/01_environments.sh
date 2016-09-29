@@ -29,9 +29,13 @@ install_zsh(){
   
   #load preferences
   mv /tmp/install_scripts-master/.zshrc ~/.zshrc
-
 }
 
+  install_fish(){
+    brew install fish
+    sudo -S sh -c 'echo "/usr/local/bin/fish" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
+    sudo -S chsh -s '/usr/local/bin/fish' "${USER}" <<< "${sudo_password}" 2> /dev/null
+  }
 
 install_python() {
   brew install python # this will already prefer the brewed one above the system installed one
