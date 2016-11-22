@@ -15,21 +15,6 @@ hushlogin(){
   mv /tmp/install_scripts-master/.hushlogin ~/.hushlogin 
 }
 
-configure_zsh() { # make zsh default shell
-  sudo -S sh -c 'echo "/usr/local/bin/zsh" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
-  sudo -S chsh -s '$(which zsh)' <<< "${sudo_password}" 2> /dev/null
-}
-
-install_zsh_plugins() {
-  readonly local zsh_plugins_dir="${HOME}/.zsh-plugins"
-  # oh-my-zsh history
-  curl --progress-bar --location 'https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/history.zsh' --output "${zsh_plugins_dir}/oh-my-zsh-history/history.zsh" --create-dirs
-  # zsh-syntax-highlighting
-  git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git' "${zsh_plugins_dir}/zsh-syntax-highlighting"
-  # zsh-history-substring-search
-  git clone 'git://github.com/zsh-users/zsh-history-substring-search.git' "${zsh_plugins_dir}/zsh-history-substring-search"
-}
-
 install_fish_plugins() {
   # Install fisherman
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
@@ -46,7 +31,6 @@ install_fish_plugins() {
   alias noDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
   alias yesDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
   alias byeDS 'sudo find . -name ".DS_Store" -exec rm "{}" \;'
-
   alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor'
   funcsave showFinder hideFinder findDS noDS yesDS byeDS
   # set -g fish_user_paths "/usr/local/sbin" $fish_user_paths >> ~/.config/fish/config.fish
