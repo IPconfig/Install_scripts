@@ -47,7 +47,7 @@ install_fish_plugins() {
   alias yesDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
   alias byeDS 'sudo find . -name ".DS_Store" -exec rm "{}" \;'
 
-  alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor;'     
+  alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor'
   funcsave showFinder hideFinder findDS noDS yesDS byeDS
   # set -g fish_user_paths "/usr/local/sbin" $fish_user_paths >> ~/.config/fish/config.fish
 }
