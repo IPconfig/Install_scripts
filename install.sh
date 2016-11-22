@@ -8,36 +8,32 @@ run_install_dotfiles() {
 
   clear
 
-  #update_system
-  #initial_setup
-  #ask_details
-  #install_xcode
+  update_system
+  initial_setup
+  ask_details
+  install_xcode
 
-  #install_brew
-  install_bash
-  #install_zsh
+  install_brew
   install_fish
   
   install_python
   #install_ruby
-  install_powerline_fonts
 
   install_brew_apps
-  #install_cask_apps
-  #install_mas_apps
+  install_cask_apps
+  install_mas_apps
 
-  #set_default_apps
+  set_default_apps
   hushlogin
-  configure_zsh
-  install_zsh_plugins
-  #install_vscode_packages
-  #configure_git
-  #lower_startup_chime
+  install_fish_plugins
+  install_vscode_packages
+  configure_git
+  lower_startup_chime
 
   Configure_osx_settings
 
   cleanup_brew
-  #cleanup_error_log
+  cleanup_error_log
   killall caffeinate # computer can go back to sleep
   final_message
 }
