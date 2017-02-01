@@ -22,6 +22,10 @@ install_cask_apps() {
   brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook qlmarkdown qlprettypatch quicklook-csv webpquicklook
 }
 
+install_fonts() {
+  brew tap caskroom/fonts
+  brew cask install font-sourcecodepro-nerd-font-mono
+}
 install_mas_apps() {
   readonly local mas_apps=('1password=443987910' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'Haskell for Mac=841285201')
 
