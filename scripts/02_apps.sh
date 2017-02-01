@@ -16,7 +16,7 @@ install_cask_apps() {
 
   # install alternative versions
   brew tap caskroom/versions
-  brew cask install --appdir='/Applications' firefox-beta google-chrome-canary pycharm-ce royal-tsx-beta
+  brew cask install --appdir='/Applications' firefox-beta google-chrome-canary royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
   brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook qlmarkdown qlprettypatch quicklook-csv webpquicklook
