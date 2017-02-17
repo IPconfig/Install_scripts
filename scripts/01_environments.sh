@@ -14,12 +14,11 @@ install_fish(){
 install_python() {
   brew install python # this will already prefer the brewed one above the system installed one
   pip install --upgrade pip
-  # install some eggs
-  pip install virtualenv virtualenvwrapper
 
   #python3
   brew install python3
   pip3 install --upgrade pip3
+  pip3 install virtualfish
 
   # create virtualenvironments 
   export WORKON_HOME=~/.virtualenvs
