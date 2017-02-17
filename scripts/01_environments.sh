@@ -9,6 +9,7 @@ install_fish(){
   brew install fish
   sudo -S sh -c 'echo "/usr/local/bin/fish" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
   sudo -S chsh -s '/usr/local/bin/fish' "${USER}" <<< "${sudo_password}" 2> /dev/null
+  sudo -S sh -c 'echo "eval (python3 -m virtualfish compat_aliases auto_activation projects)" >> ~/.config/fish/config.fish'
 }
 
 install_python() {
