@@ -12,7 +12,7 @@ install_brew_apps() {
 }
 
 install_cask_apps() {
-  brew cask install --appdir='/Applications' cyberduck docker-toolbox dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro shotcut steam suspicious-package transmission visual-studio-code whatsapp xact
+  brew cask install --appdir='/Applications' cyberduck docker dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro shotcut steam suspicious-package transmission visual-studio-code whatsapp xact
 
   # install alternative versions
   brew tap caskroom/versions
