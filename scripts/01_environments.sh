@@ -16,15 +16,19 @@ install_python() {
   brew install python # this will already prefer the brewed one above the system installed one
   pip install --upgrade pip
 
-  #python3
+  # python3
   brew install python3
-  pip3 install --upgrade pip3
+  pip3 install --upgrade pip setuptools wheel
+  pip3 install --force-reinstall --upgrade pip # point 'pip' to python3 instead of python2
   pip3 install virtualfish
 
   # create virtualenvironments 
   export WORKON_HOME=~/.virtualenvs
   mkdir -p $WORKON_HOME
   source /usr/local/bin/virtualenvwrapper.sh
+
+  # install pipsi to install scripts into seperate virtualenvs to shield them from your system and each other
+  curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
 }
 
 install_ruby() {
