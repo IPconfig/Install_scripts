@@ -40,5 +40,5 @@ install_ruby() {
 install_haskell() {
 # see https://blog.jez.io/2016/08/03/vim-and-haskell-in-2016-on-os-x/
 brew install haskell-stack
-stack  --resolver=lts-8.4 setup # https://www.stackage.org/snapshots
+stack  --resolver=lts-9.10 setup # https://www.stackage.org/snapshots
 }
