@@ -52,7 +52,9 @@ install_vscode_packages() {
 }
 
 configure_git() {
-  echo -e "[user]\n\tname = ${name}\n\temail = ${github_email}\n[github]\n\tuser = ${github_username}" > "${HOME}/.gitconfig"
+  git config --global user.name "${name}"
+  git config --global user.email "${github_email}"
+  git config --global github.user "${github_username}"
   git config --global credential.helper osxkeychain
   git config --global push.default simple
   git config --global rerere.enabled true
