@@ -32,8 +32,12 @@ install_fish_plugins() {
   alias yesDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
   alias byeDS 'sudo find . -name ".DS_Store" -exec rm "{}" \;'
   alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor'
-  funcsave showFinder hideFinder findDS noDS yesDS byeDS
-  # set -g fish_user_paths "/usr/local/sbin" $fish_user_paths >> ~/.config/fish/config.fish
+  alias ls 'ls -lhFG'
+  alias df 'df -H' # Displays disk free space
+  alias grep 'grep --color=always -I' # Colorful grep that ignores binary file and outputs line number
+
+  funcsave showFinder hideFinder findDS noDS yesDS byeDS brew_update ls df grep
+  fish_update_completions
 }
 
 install_vscode_packages() {
