@@ -4,7 +4,6 @@ install_brew_apps() {
   brew install asciinema asciinema2gif # install terminal screen recorder
   brew install exiftool # R/W exif information
   brew install git git-extras ghi # git from the commandline
-  brew install gifify # make gifs from movies
   brew install hr # horizontal ruler for the terminal
   brew install mactex # Latex distribution
   brew install duti # needed later on to set default app for extensions
