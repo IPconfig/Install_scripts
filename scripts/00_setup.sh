@@ -1,5 +1,5 @@
 bold_echo() { # helper function for bold text
-  echo "$(tput bold)$1$(tput sgr0)"
+  echo "$(tput bold){1}$(tput sgr0)"
 }
 
 renew_sudo() { # helper function for when the following command needs 'sudo' active but shouldn't be called with it
@@ -7,7 +7,7 @@ renew_sudo() { # helper function for when the following command needs 'sudo' act
 }
 
 initial_setup() {
-  export PATH="/usr/local/bin:$PATH"
+  export PATH="/usr/local/bin:${PATH}"
 
   trap 'exit 0' SIGINT # exit cleanly if aborted with ⌃C
   caffeinate & # prevent computer from going to sleep
