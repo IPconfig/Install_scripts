@@ -17,7 +17,7 @@ run_install_dotfiles() {
   install_fish
   
   install_python
-  #install_ruby
+  install_ruby
 
   install_brew_apps
   install_cask_apps
