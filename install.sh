@@ -30,7 +30,7 @@ run_install_dotfiles() {
   configure_git
   lower_startup_chime
 
-  Configure_osx_settings
+  Configure_macOS_settings
 
   cleanup_brew
   cleanup_error_log

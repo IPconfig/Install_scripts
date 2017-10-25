@@ -1,4 +1,4 @@
-Configure_osx_settings() {
+Configure_macOS_settings() {
 # ask for 'sudo' authentication
   if sudo -n true 2> /dev/null; then
     read -s -n0 -p "$(tput bold)Some commands require 'sudo', but it seems you have already authenticated. When you’re ready to continue, press ↵.$(tput sgr0)"
