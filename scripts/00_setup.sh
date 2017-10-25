@@ -3,7 +3,7 @@ bold_echo() { # helper function for bold text
 }
 
 renew_sudo() { # helper function for when the following command needs 'sudo' active but shouldn't be called with it
-  sudo -S -v <<< "${sudo_password}" 2> /dev/null
+  sudo --stdin --validate <<< "${sudo_password}" 2> /dev/null
 }
 
 initial_setup() {
@@ -22,10 +22,10 @@ ask_details() {
   # ask for the administrator password upfront, for commands that require 'sudo'
   clear
   bold_echo 'Insert the "sudo" password now (will not be echoed).'
-  until sudo -n true 2> /dev/null; do # if password is wrong, keep asking
+  until sudo --non-interactive true 2> /dev/null; do # if password is wrong, keep asking
     read -s -p 'Password: ' sudo_password
     echo
-    sudo -S -v <<< "${sudo_password}" 2> /dev/null
+    sudo --stdin --validate <<< "${sudo_password}" 2> /dev/null
   done
 
   # ask for Mac App Store password
@@ -44,7 +44,9 @@ ask_details() {
   bold_echo 'Some contact information to be set in the lock screen:'
   read -p 'Email address: ' email
   read -p 'Telephone number: ' telephone
-  sudo -S defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Email: ${email}\nTel: ${telephone}" <<< "${sudo_password}" 2> /dev/null
+  sudo --stdin defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Email: ${email}\nTel: ${telephone}" <<< "${sudo_password}" 2> /dev/null
+
+  clear
 }
 
   install_xcode() {
