@@ -15,6 +15,7 @@ install_fish_plugins() {
   # Install fisherman
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
   set --export PATH /usr/local/sbin $PATH
+  set --export PATH $PATH /Users/Justin/.local/bin/ #Needed for Hakyll-Init
   fisher up
   fisher z
   fisher await
