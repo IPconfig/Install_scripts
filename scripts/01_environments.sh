@@ -42,4 +42,5 @@ install_haskell() {
 brew install haskell-stack
 stack  --resolver=lts-9.11 setup # https://www.stackage.org/snapshots
 stack build intero
+stack install hlint
 }
