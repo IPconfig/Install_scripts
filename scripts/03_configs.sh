@@ -43,7 +43,7 @@ install_fish_plugins() {
 }
 
 install_vscode_packages() {
-  code --install-extension ms-vscode.csharp donjayamanne.python robertohuertasm.vscode-icons cssho.vscode-svgviewer
+  code --install-extension ms-python.python vans.haskero robertohuertasm.vscode-icons
 }
 
 configure_git() {
