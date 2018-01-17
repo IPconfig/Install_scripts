@@ -48,12 +48,6 @@ Configure_macOS_settings() {
   echo "Disable the 'Are you sure you want to open this application?' dialog."
   defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-  #echo 'Show all filename extensions in Finder.'
-  #defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-  #echo 'Disable the warning when changing a file extension.'
-  #defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
   echo 'Use list view in all Finder windows by default.'
   # Four-letter codes for the other view modes: 'icnv', 'clmv', 'Flwv'
   defaults write com.apple.finder FXPreferredViewStyle -string 'Nlsv'
@@ -193,56 +187,56 @@ Configure_macOS_settings() {
   ###############################################################################
   # Terminal                                                                    #
   ###############################################################################
-  echo 'Only use UTF-8 in Terminal.app'
-  defaults write com.apple.terminal StringEncodings -array 4
+ # echo 'Only use UTF-8 in Terminal.app'
+ # defaults write com.apple.terminal StringEncodings -array 4
 
-  echo 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
+#   echo 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
 
-osascript <<EOD
+# osascript <<EOD
 
-tell application "Terminal"
+# tell application "Terminal"
 
-	local allOpenedWindows
-	local initialOpenedWindows
-	local windowID
-	set themeName to "Solarized Dark xterm-256color"
+# 	local allOpenedWindows
+# 	local initialOpenedWindows
+# 	local windowID
+# 	set themeName to "Solarized Dark xterm-256color"
 
-	(* Store the IDs of all the open terminal windows. *)
-	set initialOpenedWindows to id of every window
+# 	(* Store the IDs of all the open terminal windows. *)
+# 	set initialOpenedWindows to id of every window
 
-	(* Open the custom theme so that it gets added to the list
-	   of available terminal themes (note: this will open two
-	   additional terminal windows). *)
-	do shell script "open '/tmp/install_scripts-master/theme/" & themeName & ".terminal'"
+# 	(* Open the custom theme so that it gets added to the list
+# 	   of available terminal themes (note: this will open two
+# 	   additional terminal windows). *)
+# 	do shell script "open '/tmp/install_scripts-master/theme/" & themeName & ".terminal'"
 
-	(* Wait a little bit to ensure that the custom theme is added. *)
-	delay 1
+# 	(* Wait a little bit to ensure that the custom theme is added. *)
+# 	delay 1
 
-	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeName
+# 	(* Set the custom theme as the default terminal theme. *)
+# 	set default settings to settings set themeName
 
-	(* Get the IDs of all the currently opened terminal windows. *)
-	set allOpenedWindows to id of every window
+# 	(* Get the IDs of all the currently opened terminal windows. *)
+# 	set allOpenedWindows to id of every window
 
-	repeat with windowID in allOpenedWindows
+# 	repeat with windowID in allOpenedWindows
 
-		(* Close the additional windows that were opened in order
-		   to add the custom theme to the list of terminal themes. *)
-		if initialOpenedWindows does not contain windowID then
-			close (every window whose id is windowID)
+# 		(* Close the additional windows that were opened in order
+# 		   to add the custom theme to the list of terminal themes. *)
+# 		if initialOpenedWindows does not contain windowID then
+# 			close (every window whose id is windowID)
 
-		(* Change the theme for the initial opened terminal windows
-		   to remove the need to close them in order for the custom
-		   theme to be applied. *)
-		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-		end if
+# 		(* Change the theme for the initial opened terminal windows
+# 		   to remove the need to close them in order for the custom
+# 		   theme to be applied. *)
+# 		else
+# 			set current settings of tabs of (every window whose id is windowID) to settings set themeName
+# 		end if
 
-	end repeat
+# 	end repeat
 
-end tell
+# end tell
 
-EOD
+# EOD
 
   # Kill affected apps
   for app in "Activity Monitor" "Dock" "Disk Utility" "Finder" "Mail" "Photos" "Safari"; do
