@@ -4,33 +4,28 @@ set_default_apps() {
 }
 
 
-
 hushlogin(){
   # Silence the last login time in terminal
   mv /tmp/install_scripts-master/.hushlogin ~/.hushlogin 
 }
 
+
 install_fish_plugins() {
   # Install fisherman
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-  set --export PATH /usr/local/sbin $PATH
-  set --export PATH $PATH /Users/Justin/.local/bin #Needed for Hakyll-Init
+  set --export PATH $HOME/.local/bin $PATH # Needed for Hakyll-Init
   fisher up
-  fisher z
-  fisher await
-  fisher edc/bass # Make Bash utilities easy to use in fish
+  fisher bass # Make Bash utilities easy to use in fish
+  fisher pipenv
   fisher docker-completion
   brew install grc; fisher grc
 
   # Theme
-  fisher omf/bobthefish
+  fisher bobthefish
   set -g theme_nerd_fonts yes
+  set -g theme_color_scheme solarized-dark
   set -x VIRTUAL_ENV_DISABLE_PROMPT 1
   set -U fish_key_bindings fish_vi_key_bindings
-
-  # Allow 256 colors in iTerm2 for pretty vim colors
-  set -gx CLICOLOR 1
-  set -gx TERM xterm-256color
 
   alias showFinder 'defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
   alias hideFinder 'defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
