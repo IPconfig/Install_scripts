@@ -12,14 +12,14 @@ install_brew_apps() {
 
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
-  brew cask install --appdir='/Applications' cyberduck docker dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro shotcut steam suspicious-package transmission visual-studio-code whatsapp xact
+  brew cask install --appdir='/Applications' cyberduck docker dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro shotcut steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
   brew tap caskroom/versions
-  brew cask install --appdir='/Applications' firefox-beta google-chrome-canary royal-tsx-beta
+  brew cask install --appdir='/Applications' firefox-beta royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
-  brew cask install betterzipql colorpicker-skalacolor epubquicklook qlcolorcode qlplayground qlstephen quicklook-json ttscoff-mmd-quicklook qlmarkdown qlprettypatch quicklook-csv webpquicklook
+  brew cask install betterzipql epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch quicklook-csv quicklook-json
 }
 
 install_fonts() {
