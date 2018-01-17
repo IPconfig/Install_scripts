@@ -30,6 +30,7 @@
   alias ls 'ls -lhFG'
   alias df 'df -H' # Displays disk free space
   alias grep 'grep --color=always -I' # Colorful grep that ignores binary file and outputs line number
+  alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
-  funcsave showFinder hideFinder findDS noDS yesDS byeDS brew_update ls df grep
+  funcsave showFinder hideFinder findDS noDS yesDS byeDS brew_update ls df grep ip
   fish_update_completions
