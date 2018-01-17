@@ -1,11 +1,9 @@
 install_brew_apps() {
-  brew install imagemagick --with-webp
   brew install ffmpeg --with-faac --with-libvpx --with-libvorbis --with-openssl --with-theora --with-x265
   brew install asciinema asciinema2gif # install terminal screen recorder
   brew install exiftool # R/W exif information
   brew install git git-extras ghi # git from the commandline
   brew install hr # horizontal ruler for the terminal
-  brew install mactex # Latex distribution
   brew install duti # needed later on to set default app for extensions
   brew install mas # mac app store from the command line
 }
