@@ -9,6 +9,10 @@ Configure_macOS_settings() {
   fi
   # more options on http://mths.be/osx
 
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
   ###############################################################################
   # General                                                                     #
   ###############################################################################
@@ -29,17 +33,19 @@ Configure_macOS_settings() {
   ###############################################################################
   # keyboard & mouse                                                            #
   ###############################################################################
-  echo 'Enable tap to click for this user.'
+  echo 'Enable tap to click for this user and for the login screen.'
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
   echo 'Enable full keyboard access for all controls.'
   # (e.g. enable Tab in modal dialogs)
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-  echo 'Disable smart quotes as they’re annoying when typing code'
+  echo 'Disable smart quotes as they’re annoying when typing code.'
   defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-  echo 'Disable smart dashes as they’re annoying when typing code'
+  echo 'Disable smart dashes as they’re annoying when typing code.'
   defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
   ###############################################################################
@@ -77,8 +83,8 @@ Configure_macOS_settings() {
   echo 'Avoid creating .DS_Store files on network volumes.'
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-  #echo 'Add a recently used applications folder to dock'
-  #defaults write com.apple.dock persistent-others -array-add '{"tile-data" = {"list-type" = 1;}; "tile-type" = "recents-tile";}'
+  echo 'Remove duplicates in the “Open With” menu (also see `lscleanup` alias).'
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
   echo 'Set hot corners.'
   # Bottom left screen corner → Desktop
@@ -130,6 +136,9 @@ Configure_macOS_settings() {
 
   # Do not track
   defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+  echo 'Deny location services access from websites.'
+  defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
 
   # Update extensions automatically
   defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
