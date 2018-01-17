@@ -17,7 +17,7 @@ install_cask_apps() {
   brew cask install --appdir='/Applications' firefox-beta royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
-  brew cask install betterzipql epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch quicklook-csv quicklook-json
+  brew cask install epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch qlvideo quicklook-csv quicklook-json
 }
 
 install_fonts() {
