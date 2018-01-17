@@ -10,7 +10,7 @@ install_brew_apps() {
 
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
-  brew cask install --appdir='/Applications' cyberduck docker dropbox flux github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro shotcut steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
+  brew cask install --appdir='/Applications' cyberduck docker dropbox github-desktop handbrake malwarebytes-anti-malware microsoft-office onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
   brew tap caskroom/versions
