@@ -28,7 +28,7 @@ install_fonts() {
 }
 
 install_mas_apps() {
-  readonly local mas_apps=('1password=443987910' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'Haskell for Mac=841285201')
+  readonly local mas_apps=('1password=443987910' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'Haskell for Mac=841285201' 'Xcode=497799835')
   mas signin "${mas_email}" "${mas_password}"
 
   for app in "${mas_apps[@]}"; do

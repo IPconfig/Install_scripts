@@ -11,7 +11,6 @@ run_install_dotfiles() {
   update_system
   initial_setup
   ask_details
-  install_xcode
 
   install_brew
   install_fish

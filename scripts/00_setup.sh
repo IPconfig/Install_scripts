@@ -47,13 +47,3 @@ ask_details() {
 
   clear
 }
-
-  install_xcode() {
-    if ! xcode-select --print-path 2> /dev/null; then
-      xcode-select --install
-
-      until xcode-select --print-path 2> /dev/null; do
-        sleep 5
-      done
-    fi
-  }
