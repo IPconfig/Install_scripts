@@ -1,3 +1,4 @@
+#!/bin/bash
 run_install_dotfiles() {
   curl --progress-bar --location 'https://github.com/IPconfig/install_scripts/archive/master.zip' | ditto -xk - '/tmp'
 
