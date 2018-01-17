@@ -6,7 +6,7 @@ install_brew() {
 }
 
 install_fish(){
-  brew install fish --HEAD
+  brew install fish
   sudo --stdin sh -c 'echo "/usr/local/bin/fish" >> /etc/shells' <<< "${sudo_password}" 2> /dev/null
   sudo --stdin chsh -s '/usr/local/bin/fish' "${USER}" <<< "${sudo_password}" 2> /dev/null
 }
