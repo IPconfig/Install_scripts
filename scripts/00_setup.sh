@@ -1,5 +1,5 @@
 bold_echo() { # helper function for bold text
-  echo "$(tput bold){1}$(tput sgr0)"
+  echo "$(tput bold)${1}$(tput sgr0)"
 }
 
 renew_sudo() { # helper function for when the following command needs 'sudo' active but shouldn't be called with it
