@@ -1,6 +1,6 @@
 set_default_apps() {
   # general extensions
-  for ext in {css,html,js,json,md,php,pug,py,rb,sh,txt}; do duti -s com.microsoft.VSCode "${ext}" all; done # code
+  for ext in {css,js,json,md,php,pug,py,rb,sh,txt}; do duti -s com.microsoft.VSCode "${ext}" all; done # code
 }
 
 
