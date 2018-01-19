@@ -2,24 +2,21 @@
 
 # Install fisherman
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-set --export PATH $HOME/.local/bin $PATH # Needed for Hakyll-Init
+set --export PATH $PATH $HOME/.local/bin # Needed for Hakyll-Init
 fisher up
 fisher await
-fisher bass # Make Bash utilities easy to use in fish
+fisher edc/bass # Make Bash utilities easy to use in fish
 fisher docker-completion
 fisher pipenv
 brew install grc; fisher grc # generic colourizer
 
 # Theme
-fisher bobthefish
+fisher oh-my-fish/bobthefish
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme solarized-dark
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -U fish_key_bindings fish_vi_key_bindings
 
-# Allow 256 colors in iTerm2 for pretty vim colors
-set -gx CLICOLOR 1
-set -gx TERM xterm-256color
 
 alias showFinder 'defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFinder 'defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'

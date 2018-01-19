@@ -11,8 +11,8 @@ hushlogin(){
 
 
 install_fish_plugins() {
-  chmod +x '/tmp/install_scripts-master/scripts/configure.fish'
-  ./tmp/install_scripts-master/scripts/configure.fish
+  chmod +x '/tmp/install_scripts-master/configure.fish'
+  fish '/tmp/install_scripts-master/configure.fish'
 }
 
 install_vscode_packages() {
