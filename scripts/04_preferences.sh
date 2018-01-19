@@ -83,9 +83,6 @@ osascript -e 'tell application "System Preferences" to quit'
   echo 'Avoid creating .DS_Store files on network volumes.'
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-  echo 'Remove duplicates in the “Open With” menu (also see `lscleanup` alias).'
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-
   echo 'Set hot corners.'
   # Bottom left screen corner → Desktop
   defaults write com.apple.dock wvous-bl-corner -int 4
