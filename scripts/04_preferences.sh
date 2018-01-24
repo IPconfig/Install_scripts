@@ -78,6 +78,7 @@ osascript -e 'tell application "System Preferences" to quit'
   echo 'Automatically open a new Finder window when a volume is mounted.'
   defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
   defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+  defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
   echo 'Display full POSIX path as Finder window title.'
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
