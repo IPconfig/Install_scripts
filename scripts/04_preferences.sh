@@ -71,6 +71,10 @@ osascript -e 'tell application "System Preferences" to quit'
   chflags nohidden "${HOME}/Library"
   chflags hidden "${HOME}/Public"
 
+  echo 'Set Home as the default location for new Finder windows.'
+  defaults write com.apple.finder NewWindowTarget -string 'PfLo'
+  defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
   echo 'Automatically open a new Finder window when a volume is mounted.'
   defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
   defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
