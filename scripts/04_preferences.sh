@@ -177,6 +177,11 @@ osascript -e 'tell application "System Preferences" to quit'
   defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
   defaults write com.apple.ActivityMonitor SortDirection -int 0
 
+  ###############################################################################
+  # Time Machine                                                                #
+  ###############################################################################
+  echo 'Prevent Time Machine from prompting to use new hard drives as backup volume.'
+  defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
   ###############################################################################
   # Mac App Store                                                               #
