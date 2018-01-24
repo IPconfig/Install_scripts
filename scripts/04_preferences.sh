@@ -146,13 +146,13 @@ osascript -e 'tell application "System Preferences" to quit'
   defaults write com.apple.Safari UniversalSearchEnabled -bool false
   defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-  # Do not track
+  echo 'Enable "Do not track".'
   defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
   echo 'Deny location services access from websites.'
   defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
 
-  # Update extensions automatically
+  echo 'Update extensions automatically.'
   defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
   ###############################################################################
