@@ -67,8 +67,9 @@ osascript -e 'tell application "System Preferences" to quit'
   echo 'Disable the warning before emptying the Trash.'
   defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-  echo 'Show the ~/Library folder.'
+  echo 'Show the ~/Library folder, hide the public folder'
   chflags nohidden "${HOME}/Library"
+  chflags hidden "${HOME}/Public"
 
   echo 'Automatically open a new Finder window when a volume is mounted.'
   defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
