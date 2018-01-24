@@ -119,9 +119,6 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   # Safari & Networking, Privacy                                                #
   ###############################################################################
-  echo 'Use OpenDNS servers.'
-  sudo networksetup -setdnsservers Wi-Fi 208.67.220.220 208.67.222.222
-
   echo 'Enable AirDrop over Ethernet and on unsupported Macs running Lion'
   defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
