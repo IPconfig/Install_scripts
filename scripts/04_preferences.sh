@@ -97,8 +97,9 @@ osascript -e 'tell application "System Preferences" to quit'
   echo 'Use current directory as default search scope in Finder.'
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-  echo 'Avoid creating .DS_Store files on network volumes.'
+  echo 'Avoid creating .DS_Store files on network or USB volumes.'
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
   echo 'Set hot corners.'
   # Bottom left screen corner → Desktop
