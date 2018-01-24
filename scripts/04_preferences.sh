@@ -30,6 +30,12 @@ osascript -e 'tell application "System Preferences" to quit'
   echo 'Disable shadow in screenshots.'
   defaults write com.apple.screencapture disable-shadow -bool true
 
+  echo '# Do not show password hints.'
+  sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
+
+  echo 'Disable guest account login.'
+  sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+
   ###############################################################################
   # keyboard & mouse                                                            #
   ###############################################################################
