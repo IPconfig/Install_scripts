@@ -17,6 +17,7 @@ set -g theme_color_scheme solarized-dark
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -U fish_key_bindings fish_vi_key_bindings
 
+function fish_greeting; end # Clear greeting message
 
 alias showFinder 'defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFinder 'defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
