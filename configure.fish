@@ -11,7 +11,7 @@ fisher pipenv
 brew install grc; fisher grc # generic colourizer
 
 # Theme
-fisher oh-my-fish/bobthefish
+fisher omf/bobthefish
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme solarized-dark
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
