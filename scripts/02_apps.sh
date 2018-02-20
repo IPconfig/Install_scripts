@@ -11,6 +11,8 @@ install_brew_apps() {
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
   brew cask install --appdir='/Applications' cyberduck docker dropbox github handbrake iina kap onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
+  renew_sudo # Microsoft Office takes a long time to download
+  brew cask install microsoft-office
 
   # install alternative versions
   brew tap caskroom/versions
