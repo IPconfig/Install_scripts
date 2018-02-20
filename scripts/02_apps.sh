@@ -15,10 +15,12 @@ install_cask_apps() {
   brew cask install microsoft-office
 
   # install alternative versions
+  renew_sudo
   brew tap caskroom/versions
   brew cask install --appdir='/Applications' firefox-beta royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
+  renew_sudo
   brew cask install epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch qlvideo quicklook-csv quicklook-json
 }
 
