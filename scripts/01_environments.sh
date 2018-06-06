@@ -12,13 +12,9 @@ install_fish(){
 }
 
 install_python() {
-  brew install python # this will already prefer the brewed one above the system installed one
+  brew install python # install python 3
   pip install --upgrade pip setuptools wheel
-
-  # python3
-  brew install python3
-  pip3 install --upgrade pip setuptools wheel
-  pip3 install pipenv # harnesses Pipfile, pip, and virtualenv into one single command.
+  pip install pipenv # harnesses Pipfile, pip, and virtualenv into one single command.
 }
 
 install_ruby() {
