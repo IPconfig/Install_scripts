@@ -4,13 +4,13 @@ install_brew_apps() {
   brew install exiftool # R/W exif information
   brew install git git-extras ghi # git from the commandline
   brew install hr # horizontal ruler for the terminal
-  brew install duti # needed later on to set default app for extensions
+  brew install duti # needed later to set default app for extensions
   brew install mas # mac app store from the command line
 }
 
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
-  brew cask install --appdir='/Applications' cyberduck docker dropbox github handbrake iina kap malwarebytes microsoft-office onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
+  brew cask install cyberduck docker dropbox github handbrake iina kap malwarebytes microsoft-office onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
   brew tap homebrew/cask-versions
