@@ -202,66 +202,65 @@ osascript -e 'tell application "System Preferences" to quit'
   # Enable the debug menu in Disk Utility
   defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
   defaults write com.apple.DiskUtility advanced-image-options -bool true
-  CFPreferencesAppSynchronize "com.apple.DiskUtility"
 
   ###############################################################################
   # Terminal                                                                    #
   ###############################################################################
-  # echo 'Only use UTF-8 in Terminal.app'
-  # defaults write com.apple.terminal StringEncodings -array 4
+ # echo 'Only use UTF-8 in Terminal.app'
+ # defaults write com.apple.terminal StringEncodings -array 4
 
-  echo 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
+echo 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
 
-  osascript <<EOD
+osascript <<EOD
 
-  tell application "Terminal"
+tell application "Terminal"
 
-    local allOpenedWindows
-    local initialOpenedWindows
-    local windowID
-    set themeName to "Solarized Dark xterm-256color"
+	local allOpenedWindows
+	local initialOpenedWindows
+	local windowID
+	set themeName to "Solarized Dark xterm-256color"
 
-    (* Store the IDs of all the open terminal windows. *)
-    set initialOpenedWindows to id of every window
+	(* Store the IDs of all the open terminal windows. *)
+	set initialOpenedWindows to id of every window
 
-    (* Open the custom theme so that it gets added to the list
-      of available terminal themes (note: this will open two
-      additional terminal windows). *)
-    do shell script "open '/tmp/install_scripts-master/theme/" & themeName & ".terminal'"
+	(* Open the custom theme so that it gets added to the list
+	   of available terminal themes (note: this will open two
+	   additional terminal windows). *)
+	do shell script "open '/tmp/install_scripts-master/theme/" & themeName & ".terminal'"
 
-    (* Wait a little bit to ensure that the custom theme is added. *)
-    delay 1
+	(* Wait a little bit to ensure that the custom theme is added. *)
+	delay 1
 
-    (* Set the custom theme as the default terminal theme. *)
-    set default settings to settings set themeName
+	(* Set the custom theme as the default terminal theme. *)
+	set default settings to settings set themeName
 
-    (* Get the IDs of all the currently opened terminal windows. *)
-    set allOpenedWindows to id of every window
+	(* Get the IDs of all the currently opened terminal windows. *)
+	set allOpenedWindows to id of every window
 
-    repeat with windowID in allOpenedWindows
+	repeat with windowID in allOpenedWindows
 
-      (* Close the additional windows that were opened in order
-        to add the custom theme to the list of terminal themes. *)
-      if initialOpenedWindows does not contain windowID then
-        close (every window whose id is windowID)
+		(* Close the additional windows that were opened in order
+		   to add the custom theme to the list of terminal themes. *)
+		if initialOpenedWindows does not contain windowID then
+			close (every window whose id is windowID)
 
-      (* Change the theme for the initial opened terminal windows
-        to remove the need to close them in order for the custom
-        theme to be applied. *)
-      else
-        set current settings of tabs of (every window whose id is windowID) to settings set themeName
-      end if
+		(* Change the theme for the initial opened terminal windows
+		   to remove the need to close them in order for the custom
+		   theme to be applied. *)
+		else
+			set current settings of tabs of (every window whose id is windowID) to settings set themeName
+		end if
 
-    end repeat
+	end repeat
 
-  end tell
+end tell
 
-  EOD
+EOD
 
-    # Kill affected apps
-    for app in "Activity Monitor" "Dock" "Disk Utility" "Finder" "Mail" "Photos" "Safari"; do
-      killall "${app}" &> /dev/null
-    done
+  # Kill affected apps
+  for app in "Activity Monitor" "Dock" "Disk Utility" "Finder" "Mail" "Photos" "Safari"; do
+    killall "${app}" &> /dev/null
+  done
 
-    echo "Done. Note that some of these changes require a logout/restart to take effect."
-  }
+  echo "Done. Note that some of these changes require a logout/restart to take effect."
+}
