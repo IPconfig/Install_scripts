@@ -13,15 +13,15 @@ install_cask_apps() {
   brew cask install --appdir='/Applications' cyberduck docker dropbox github handbrake iina kap malwarebytes microsoft-office onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
-  brew tap caskroom/versions
-  brew cask install --appdir='/Applications' firefox-beta royal-tsx-beta
+  brew tap homebrew/cask-versions
+  brew cask install firefox-beta royal-tsx-beta
 
   # prefpanes, qlplugins, colorpickers
   brew cask install epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch qlvideo quicklook-csv quicklook-json
 }
 
 install_fonts() {
-  brew tap caskroom/fonts
+  brew tap homebrew/cask-fonts
   brew cask install font-sourcecodepro-nerd-font-mono
 }
 
