@@ -24,9 +24,8 @@ install_ruby() {
 }
 
 install_haskell() {
-# see https://blog.jez.io/2016/08/03/vim-and-haskell-in-2016-on-os-x/
 brew install haskell-stack
-stack  --resolver=lts-10.3 setup # https://www.stackage.org/snapshots
+stack --resolver=lts-11.12 setup # https://www.stackage.org/snapshots
 stack build intero
 stack install hlint
 }
