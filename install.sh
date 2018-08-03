@@ -18,6 +18,7 @@ run_install_dotfiles() {
   # install_python
   install_anaconda
   install_ruby
+  install_haskell
 
   install_brew_apps
   install_cask_apps
