@@ -1,6 +1,7 @@
 set_default_apps() {
   # general extensions
-  for ext in {css,js,json,md,php,pug,py,rb,sh,txt}; do duti -s com.microsoft.VSCode "${ext}" all; done # code
+  for ext in {aac,avi,flac,m4a,m4b,mkv,mov,mp3,mp4,mpeg,mpg,wav}; do duti -s com.colliderli.iina "${ext}" all; done # media
+  for ext in {css,html,js,json,md,php,pug,py,rb,sh,txt}; do duti -s com.microsoft.VSCode "${ext}" all; done # code
 }
 
 
