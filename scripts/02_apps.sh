@@ -10,11 +10,11 @@ install_brew_apps() {
 
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
-  brew cask install cyberduck docker dropbox github handbrake iina kap malwarebytes microsoft-office onyx postman sequel-pro steam suspicious-package transmission tunnelblick visual-studio-code whatsapp xact
+  brew cask install cyberduck docker dropbox github handbrake iina microsoft-office onyx postman sequel-pro steam suspicious-package telegram transmission tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
-  brew cask install firefox-beta royal-tsx-beta
   brew tap caskroom/versions
+  brew cask install firefox-beta
 
   # prefpanes, qlplugins, colorpickers
   brew cask install epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch qlvideo quicklook-csv quicklook-json
