@@ -21,8 +21,8 @@ install_cask_apps() {
 }
 
 install_fonts() {
-  brew cask install font-sourcecodepro-nerd-font-mono
   brew tap caskroom/fonts
+  brew cask install font-fira-code # see https://github.com/tonsky/FiraCode
 }
 
 install_mas_apps() {
