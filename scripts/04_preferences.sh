@@ -7,7 +7,7 @@ Configure_macOS_settings() {
     echo -n "$(tput bold)When you’re ready to continue, insert your password. This is done upfront for the commands that require 'sudo'.$(tput sgr0) "
     sudo -v
   fi
-  # more options on http://mths.be/osx
+# more options on http://mths.be/osx
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -218,7 +218,7 @@ tell application "Terminal"
 	local allOpenedWindows
 	local initialOpenedWindows
 	local windowID
-	set themeName to "Solarized Dark xterm-256color"
+	set themeName to "Solarized Dark Higher Contrast"
 
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
