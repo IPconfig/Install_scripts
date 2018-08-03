@@ -15,7 +15,8 @@ run_install_dotfiles() {
   install_brew
   install_fish
   
-  install_python
+  # install_python
+  install_anaconda
   install_ruby
 
   install_brew_apps

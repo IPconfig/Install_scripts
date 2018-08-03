@@ -17,6 +17,10 @@ install_python() {
   pip install pipenv # harnesses Pipfile, pip, and virtualenv into one single command.
 }
 
+install_anaconda() {
+  brew cask install anaconda
+}
+
 install_ruby() {
   brew install ruby
   gem update --system
