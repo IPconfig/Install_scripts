@@ -25,7 +25,7 @@ alias findDS 'sudo find . -name ".DS_Store"'
 alias noDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores true'
 alias yesDS 'defaults write com.apple.desktopservices DSDontWriteNetworkStores false'
 alias byeDS 'sudo find . -name ".DS_Store" -exec rm "{}" \;'
-alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor'
+alias brew_update 'brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew prune; brew doctor'
 alias ls 'ls -lhFG'
 alias df 'df -H' # Displays disk free space
 alias grep 'grep --color=always -I' # Colorful grep that ignores binary file and outputs line number
