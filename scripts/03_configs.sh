@@ -10,12 +10,6 @@ hushlogin(){
   mv /tmp/install_scripts-master/.hushlogin ~/.hushlogin 
 }
 
-
-install_fish_plugins() {
-  chmod +x '/tmp/install_scripts-master/configure.fish'
-  fish '/tmp/install_scripts-master/configure.fish'
-}
-
 install_vscode_packages() {
   code --install-extension ms-python.python vans.haskero robertohuertasm.vscode-icons
 }

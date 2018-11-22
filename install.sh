@@ -13,7 +13,8 @@ run_install_dotfiles() {
   ask_details
 
   install_brew
-  install_fish
+  # install_fish
+  install_zsh
   
   # install_python
   install_anaconda
@@ -26,7 +27,6 @@ run_install_dotfiles() {
 
   set_default_apps
   hushlogin
-  install_fish_plugins
   install_vscode_packages
   configure_git
   lower_startup_chime
