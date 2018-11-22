@@ -3,6 +3,7 @@ install_brew_apps() {
   brew install asciinema asciinema2gif # install terminal screen recorder
   brew install exiftool # R/W exif information
   brew install git git-extras ghi # git from the commandline
+  brew install ctags
   brew install hr # horizontal ruler for the terminal
   brew install duti # needed later to set default app for extensions
   brew install mas # mac app store from the command line
