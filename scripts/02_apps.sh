@@ -11,7 +11,7 @@ install_brew_apps() {
 
 install_cask_apps() {
   renew_sudo # to make the Caskroom on first install
-  brew cask install cyberduck docker dropbox github handbrake iina microsoft-office onyx postman sequel-pro steam suspicious-package telegram transmission tunnelblick visual-studio-code whatsapp xact
+  brew cask install cyberduck docker dropbox github handbrake iina microsoft-office onyx postman steam telegram tunnelblick visual-studio-code whatsapp xact
 
   # install alternative versions
   brew tap caskroom/versions
