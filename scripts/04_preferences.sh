@@ -116,6 +116,11 @@ osascript -e 'tell application "System Preferences" to quit'
   	OpenWith -bool true \
   	Privileges -bool true
 
+  echo 'Don’t show recent applications in Dock'
+  defaults write com.apple.dock show-recents -bool false
+
+
+
   ###############################################################################
   # Safari & Networking, Privacy                                                #
   ###############################################################################
