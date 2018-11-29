@@ -28,6 +28,7 @@ install_zsh(){
 install_python() {
   brew install python # install python 3
   pip3 install --upgrade pip setuptools wheel
+  pip3 install flake8 # install a linter
   pip3 install pipenv # harnesses Pipfile, pip, and virtualenv into one single command.
 }
 
