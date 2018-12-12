@@ -16,6 +16,9 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   # General                                                                     #
   ###############################################################################
+  echo 'Disable the sound effects on boot'
+  sudo nvram SystemAudioVolume=" "
+
   echo 'Expand save panel by default.'
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -29,6 +32,9 @@ osascript -e 'tell application "System Preferences" to quit'
 
   echo 'Disable shadow in screenshots.'
   defaults write com.apple.screencapture disable-shadow -bool true
+
+  echo 'Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window'
+  sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
   echo '# Do not show password hints.'
   sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
@@ -124,6 +130,10 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   # Safari & Networking, Privacy                                                #
   ###############################################################################
+  echo 'Privacy: don’t send search queries to Apple'
+  defaults write com.apple.Safari UniversalSearchEnabled -bool false
+  defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
   echo 'Enable AirDrop over Ethernet and on unsupported Macs running Lion'
   defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
@@ -165,7 +175,14 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   echo 'Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app.'
   defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+  
+  echo 'Display emails in threaded mode, sorted by date (oldest at the top)'
+  defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+  defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+  defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
+  echo 'Disable inline attachments (just show the icons)'
+  defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
   ###############################################################################
   # Activity Monitor                                                            #
   ###############################################################################
