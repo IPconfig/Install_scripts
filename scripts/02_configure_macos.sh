@@ -1,12 +1,5 @@
-Configure_macOS_settings() {
-# ask for 'sudo' authentication
-  if sudo -n true 2> /dev/null; then
-    read -s -n0 -p "$(tput bold)Some commands require 'sudo', but it seems you have already authenticated. When you’re ready to continue, press ↵.$(tput sgr0)"
-    echo
-  else
-    echo -n "$(tput bold)When you’re ready to continue, insert your password. This is done upfront for the commands that require 'sudo'.$(tput sgr0) "
-    sudo -v
-  fi
+function Configure_macOS {
+get_permission
 # more options on http://mths.be/osx
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -16,98 +9,98 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   # General                                                                     #
   ###############################################################################
-  echo 'Disable the sound effects on boot'
+  log_info 'Disable the sound effects on boot'
   sudo nvram SystemAudioVolume=" "
 
-  echo 'Expand save panel by default.'
+  log_info 'Expand save panel by default.'
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-  echo 'Expand print panel by default.'
+  log_info 'Expand print panel by default.'
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-  echo 'Save documents to disk (not to iCloud) by default.'
+  log_info 'Save documents to disk (not to iCloud) by default.'
   defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-  echo 'Disable shadow in screenshots.'
+  log_info 'Disable shadow in screenshots.'
   defaults write com.apple.screencapture disable-shadow -bool true
 
-  echo 'Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window'
+  log_info 'Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window'
   sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-  echo '# Do not show password hints.'
+  log_info '# Do not show password hints.'
   sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
 
-  echo 'Disable guest account login.'
+  log_info 'Disable guest account login.'
   sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
   ###############################################################################
   # keyboard & mouse                                                            #
   ###############################################################################
-  echo 'Enable tap to click for this user and for the login screen.'
+  log_info 'Enable tap to click for this user and for the login screen.'
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-  echo 'Enable full keyboard access for all controls.'
+  log_info 'Enable full keyboard access for all controls.'
   # (e.g. enable Tab in modal dialogs)
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-  echo 'Disable smart quotes as they’re annoying when typing code.'
+  log_info 'Disable smart quotes as they’re annoying when typing code.'
   defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-  echo 'Disable smart dashes as they’re annoying when typing code.'
+  log_info 'Disable smart dashes as they’re annoying when typing code.'
   defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
   ###############################################################################
   # Finder & Dock                                                               #
   ###############################################################################
-  echo "Disable the 'Are you sure you want to open this application?' dialog."
+  log_info "Disable the 'Are you sure you want to open this application?' dialog."
   defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-  echo 'Use list view in all Finder windows by default.'
+  log_info 'Use list view in all Finder windows by default.'
   # Four-letter codes for the other view modes: 'icnv', 'clmv', 'Flwv'
   defaults write com.apple.finder FXPreferredViewStyle -string 'Nlsv'
 
-  echo 'Disable the warning before emptying the Trash.'
+  log_info 'Disable the warning before emptying the Trash.'
   defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-  echo 'Show the ~/Library folder, hide the public folder'
+  log_info 'Show the ~/Library folder, hide the public folder'
   chflags nohidden "${HOME}/Library"
   chflags hidden "${HOME}/Public"
 
-  echo 'Set Home as the default location for new Finder windows.'
+  log_info 'Set Home as the default location for new Finder windows.'
   defaults write com.apple.finder NewWindowTarget -string 'PfLo'
   defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
-  echo 'Automatically open a new Finder window when a volume is mounted.'
+  log_info 'Automatically open a new Finder window when a volume is mounted.'
   defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
   defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
   defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-  echo 'Enable snap-to-grid for icons on the desktop and in other icon views.'
+  log_info 'Enable snap-to-grid for icons on the desktop and in other icon views.'
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
   /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
   /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 
 
-  echo 'Display full POSIX path as Finder window title.'
+  log_info 'Display full POSIX path as Finder window title.'
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-  echo 'Show Path bar in Finder.'
+  log_info 'Show Path bar in Finder.'
   defaults write com.apple.finder ShowPathbar -bool true
 
-  echo 'Show Status bar in Finder.'
+  log_info 'Show Status bar in Finder.'
   defaults write com.apple.finder ShowStatusBar -bool true
 
-  echo 'Use current directory as default search scope in Finder.'
+  log_info 'Use current directory as default search scope in Finder.'
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-  echo 'Avoid creating .DS_Store files on network or USB volumes.'
+  log_info 'Avoid creating .DS_Store files on network or USB volumes.'
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
   defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-  echo 'Set hot corners.'
+  log_info 'Set hot corners.'
   # Bottom left screen corner → Desktop
   defaults write com.apple.dock wvous-bl-corner -int 4
   # Top right screen corner → Notification Center
@@ -115,112 +108,110 @@ osascript -e 'tell application "System Preferences" to quit'
   # Bottom right screen corner → Mission Control
   defaults write com.apple.dock wvous-br-corner -int 2
 
-  echo 'Expand the file echo panels by default.'
+  log_info 'Expand the file log_info panels by default.'
   # “General”, “Open with”, and “Sharing & Permissions”
   defaults write com.apple.finder FXInfoPanesExpanded -dict \
   	General -bool true \
   	OpenWith -bool true \
   	Privileges -bool true
 
-  echo 'Don’t show recent applications in Dock'
+  log_info 'Don’t show recent applications in Dock'
   defaults write com.apple.dock show-recents -bool false
-
-
 
   ###############################################################################
   # Safari & Networking, Privacy                                                #
   ###############################################################################
-  echo 'Privacy: don’t send search queries to Apple'
+  log_info 'Privacy: don’t send search queries to Apple'
   defaults write com.apple.Safari UniversalSearchEnabled -bool false
   defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-  echo 'Enable AirDrop over Ethernet and on unsupported Macs running Lion'
+  log_info 'Enable AirDrop over Ethernet and on unsupported Macs running Lion'
   defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-  echo 'Set up Safari for development.'
+  log_info 'Set up Safari for development.'
   defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
   defaults write com.apple.Safari IncludeDevelopMenu -bool true
   defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
   defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
   defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-  echo 'Show the full URL in the adress bar'
+  log_info 'Show the full URL in the adress bar'
   defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-  echo 'Show status bar'
+  log_info 'Show status bar'
   defaults write com.apple.Safari ShowStatusBar -bool true
 
-  echo 'Show favorites bar'
+  log_info 'Show favorites bar'
   defaults write com.apple.Safari ShowFavoritesBar -bool true
   defaults write com.apple.Safari "ShowFavoritesBar-v2" -bool true
 
-  echo 'show tab bar'
+  log_info 'show tab bar'
   defaults write com.apple.Safari AlwaysShowTabBar -bool true
 
-  echo 'Privacy: don’t send search queries to Apple.'
+  log_info 'Privacy: don’t send search queries to Apple.'
   defaults write com.apple.Safari UniversalSearchEnabled -bool false
   defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-  echo 'Enable "Do not track".'
+  log_info 'Enable "Do not track".'
   defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
-  echo 'Deny location services access from websites.'
+  log_info 'Deny location services access from websites.'
   defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
 
-  echo 'Update extensions automatically.'
+  log_info 'Update extensions automatically.'
   defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
   ###############################################################################
   # Mail                                                                        #
   ###############################################################################
-  echo 'Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app.'
+  log_info 'Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app.'
   defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
   
-  echo 'Display emails in threaded mode, sorted by date (oldest at the top)'
+  log_info 'Display emails in threaded mode, sorted by date (oldest at the top)'
   defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
   defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
   defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
-  echo 'Disable inline attachments (just show the icons)'
+  log_info 'Disable inline attachments (just show the icons)'
   defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
   ###############################################################################
   # Activity Monitor                                                            #
   ###############################################################################
-  echo 'Show the main window when launching Activity Monitor.'
+  log_info 'Show the main window when launching Activity Monitor.'
   defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
-  echo 'Visualize CPU usage in the Activity Monitor Dock icon.'
+  log_info 'Visualize CPU usage in the Activity Monitor Dock icon.'
   defaults write com.apple.ActivityMonitor IconType -int 5
 
-  echo 'Show all processes in Activity Monitor.'
+  log_info 'Show all processes in Activity Monitor.'
   defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
-  echo 'Sort Activity Monitor results by CPU usage.'
+  log_info 'Sort Activity Monitor results by CPU usage.'
   defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
   defaults write com.apple.ActivityMonitor SortDirection -int 0
 
   ###############################################################################
   # Time Machine                                                                #
   ###############################################################################
-  echo 'Prevent Time Machine from prompting to use new hard drives as backup volume.'
+  log_info 'Prevent Time Machine from prompting to use new hard drives as backup volume.'
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
   ###############################################################################
   # Mac App Store                                                               #
   ###############################################################################
-  echo 'Check for software updates daily, not just once per week.'
+  log_info 'Check for software updates daily, not just once per week.'
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
   ###############################################################################
   # Photos                                                                      #
   ###############################################################################
-  echo 'Prevent Photos from opening automatically when devices are plugged in.'
+  log_info 'Prevent Photos from opening automatically when devices are plugged in.'
   defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
   ###############################################################################
   # Disk Utility                                                                #
   ###############################################################################
-  echo 'Setting Disk Utility preferences.'
+  log_info 'Setting Disk Utility preferences.'
   # Enable the debug menu in Disk Utility
   defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
   defaults write com.apple.DiskUtility advanced-image-options -bool true
@@ -228,10 +219,10 @@ osascript -e 'tell application "System Preferences" to quit'
   ###############################################################################
   # Terminal                                                                    #
   ###############################################################################
- # echo 'Only use UTF-8 in Terminal.app'
+ # log_info 'Only use UTF-8 in Terminal.app'
  # defaults write com.apple.terminal StringEncodings -array 4
 
-echo 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
+log_info 'Use a modified version of the Solarized Dark theme by default in Terminal.app'
 
 osascript <<EOD
 
@@ -284,5 +275,29 @@ EOD
     killall "${app}" &> /dev/null
   done
 
-  echo "Done. Note that some of these changes require a logout/restart to take effect."
+  log_info "Done. Note that some of these changes require a logout/restart to take effect."
+}
+
+
+function set_lock_screen_message {
+  local email telephone
+  get_permission
+
+  ask 'Give contact information to be set in the lock screen:'
+  read -rp 'Email address: ' email
+  read -rp 'Telephone number: ' telephone
+  sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText -string "$(echo -e "If found, please contact:\nEmail: ${email}\nTel: ${telephone}")"
+}
+
+
+function hushlogin {
+  # Silence the last login time in terminal
+  cp /tmp/install_scripts-master/files/.hushlogin $HOME/.hushlogin 
+}
+
+function lower_startup_chime {
+  get_permission
+  log_info 'Ensuring a low volume of the startup chime.'
+  chmod +x '/tmp/install_scripts-master/files/lowchime'
+  sudo /tmp/install_scripts-master/files/lowchime install
 }
