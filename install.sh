@@ -48,10 +48,10 @@ function show_options {
   elif [[ "${option}" -eq 3 ]]; then
     install_homebrew
     install_python
-    install_node
     install_java
+    # install_node
     # install_haskell
-    install_julia
+    # install_julia
   elif [[ "${option}" -eq 4 ]]; then
     install_brew_apps
     install_cask_apps
