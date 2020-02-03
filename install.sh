@@ -49,6 +49,7 @@ function show_options {
     install_homebrew
     install_python
     install_node
+    install_java
     # install_haskell
     install_julia
   elif [[ "${option}" -eq 4 ]]; then

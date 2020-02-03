@@ -24,6 +24,10 @@ function install_python {
   pip install flake8
 }
 
+function install_java {
+  brew cask install java
+}
+
 function install_node {
   log_info 'Installing Node and packages.'
 
