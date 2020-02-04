@@ -17,7 +17,7 @@ function install_brew_apps {
 function install_cask_apps {
   get_permission # to make the Caskroom on first install
   log_info 'Installing casks.'
-  brew cask install cyberduck docker dropbox github handbrake iina microsoft-office onyx postman steam telegram tunnelblick visual-studio-code whatsapp xact
+  brew cask install dropbox github handbrake iina onyx steam telegram tunnelblick visual-studio-code whatsapp xact
 
   log_info 'Installing cask versions.'
   brew tap homebrew/cask-versions
@@ -34,7 +34,7 @@ function install_cask_apps {
 
 function install_mas_apps {
   log_info 'Installing Mac App Store Apps.'
-  local mas_apps=('1password=443987910' 'WiFi Scanner=411680127' 'The Unarchiver=425424353' 'Haskell for Mac=841285201' 'Xcode=497799835')
+  local mas_apps=('1password=443987910' 'WiFi Scanner=411680127' 'The Unarchiver=425424353')
 
   for app in "${mas_apps[@]}"; do
     local app_id="${app#*=}"
