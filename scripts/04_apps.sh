@@ -20,13 +20,13 @@ function install_cask_apps {
   brew cask install cyberduck docker dropbox github handbrake iina microsoft-office onyx postman steam telegram tunnelblick visual-studio-code whatsapp xact
 
   log_info 'Installing cask versions.'
-  brew tap caskroom/versions
+  brew tap homebrew/cask-versions
   brew cask install firefox-beta
 
   log_info 'Installing prefpanes, qlplugins, colorpickers.'
   brew cask install epubquicklook qlcolorcode qlimagesize qlstephen ttscoff-mmd-quicklook qlmarkdown qlplayground qlprettypatch qlvideo quicklook-csv quicklook-json
 
-  brew tap caskroom/fonts
+  brew tap homebrew/cask-fonts
   brew cask install font-fira-code # see https://github.com/tonsky/FiraCode
 }
 
